@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+date -u '+%FT%T%z'
+
+clojure --version
+
+clojure -M:default:cider/nrepl

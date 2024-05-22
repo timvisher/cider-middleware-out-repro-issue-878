@@ -1,0 +1,15 @@
+{:deps    {org.clojure/clojure                 {:mvn/version "1.11.3"}
+           org.clojure/tools.logging           {:mvn/version "1.2.4"}
+           org.apache.logging.log4j/log4j-api  {:mvn/version "2.23.1"}
+           org.apache.logging.log4j/log4j-core {:mvn/version "2.23.1"}}
+ :aliases {:default
+           {:jvm-opts ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/log4j2-factory"
+                       "-Dlog4j2.configurationFile=log4j2.properties"]}
+           :cider/nrepl
+           {:extra-deps
+            {nrepl/nrepl       {:mvn/version "1.0.0"}
+             cider/cider-nrepl {:mvn/version "0.45.0"}}
+            :main-opts ["-m"
+                        "nrepl.cmdline"
+                        "--middleware"
+                        "[cider.nrepl/cider-middleware]"]}}}
