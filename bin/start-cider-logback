@@ -6,4 +6,4 @@ java -version
 
 clojure --version
 
-clojure -M:logback:cider/nrepl
+clojure -M:default:logback:cider/nrepl
