@@ -1,27 +1,14 @@
-{:deps    {org.clojure/clojure                           {:mvn/version "1.11.3"}
-           org.clojure/tools.logging                     {:mvn/version "1.2.4"}}
+{:deps    {org.clojure/clojure                 {:mvn/version "1.11.3"}
+           org.clojure/tools.logging           {:mvn/version "1.2.4"}
+           org.apache.logging.log4j/log4j-api  {:mvn/version "2.23.1"}
+           org.apache.logging.log4j/log4j-core {:mvn/version "2.23.1"}}
  :aliases {:default
-           {:jvm-opts ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/slf4j-factory"]}
-
-           ;; :log4j2 and :logback are mutually exclusive
-           :log4j2
-           {:extra-deps
-            {org.apache.logging.log4j/log4j-api  {:mvn/version "2.23.1"}
-             org.apache.logging.log4j/log4j-core {:mvn/version "2.23.1"}}
-            :jvm-opts ["-Dlog4j2.configurationFile=log4j2.properties"]}
-           :logback
-           {:extra-deps
-            {org.slf4j/slf4j-api                           {:mvn/version "2.0.13"}
-             ch.qos.logback/logback-core                   {:mvn/version "1.5.6"}
-             ch.qos.logback/logback-classic                {:mvn/version "1.5.6"}
-             net.logstash.logback/logstash-logback-encoder {:mvn/version "7.4"}}
-            :jvm-opts ["-Dlogback.configurationFile=logback.xml"]}
-           ;; :log4j2 and :logback are mutually exclusive
-
+           {:jvm-opts ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/log4j2-factory"
+                       "-Dlog4j2.configurationFile=log4j2.properties"]}
            :cider/nrepl
            {:extra-deps
-            {nrepl/nrepl {:mvn/version "1.1.2"}
-             cider/cider-nrepl {:mvn/version "0.48.0"}}
+            {nrepl/nrepl       {:mvn/version "1.0.0"}
+             cider/cider-nrepl {:mvn/version "0.45.0"}}
             :main-opts ["-m"
                         "nrepl.cmdline"
                         "--middleware"

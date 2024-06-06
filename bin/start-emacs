@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-emacs --no-site-file --no-site-lisp --no-splash --no-x-resources --init-directory emacs.d "$@"

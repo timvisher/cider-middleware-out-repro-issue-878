@@ -1,7 +1,0 @@
-debbugs
-edn
-eduction
-hist
-juxt
-nd
-unform
