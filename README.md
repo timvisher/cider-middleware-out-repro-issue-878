@@ -23,7 +23,7 @@ It's possible to reproduce this with both logback and log4j2, though, so ↑ may
     ```
     $ bin/start-emacs cider-middleware-out-repro-issue-878.clj
     ```
-    
+
     The messages buffer will contain information about CIDER and Emacs versions.
 
     ```
@@ -37,7 +37,7 @@ It's possible to reproduce this with both logback and log4j2, though, so ↑ may
     M-x cider-connect RET localhost RET <port from ↑ e.g. 60294> RET
     ```
 
-1. Eval `(log-forever)`
+1. Eval `(defonce log-forever-future (make-log-forever-future))`
 
     ```
     M-x cider-switch-to-last-clojure-buffer RET
@@ -47,13 +47,11 @@ It's possible to reproduce this with both logback and log4j2, though, so ↑ may
     M-x cider-load-buffer RET
     ```
 
-    Navigate to the comment block and eval `log-forever`
-
-    ```
-    M-x cider-eval-last-sexp RET
-    ```
-
 1. Observe some logs in the repl buffer
+
+1. Eval the `(log/infof "I always show up …")` form and observe the message in the REPL buffer
+
+1. Eval the `(if (future-cancelled? …))` form and observe the massage in the REPL buffer
 
 1. Quit CIDER
 
@@ -64,9 +62,13 @@ It's possible to reproduce this with both logback and log4j2, though, so ↑ may
 1. Reconnect to CIDER
 
     ```
-    M-x cider-connect RET localhost RET RET
+    M-x cider-connect RET localhost RET <port from ↑ e.g. 60294> RET
     ```
 
 1. Observe no logs in the repl buffer going forward
 
-1. *Note:* Using `M-x cider-log-show` doesn't produce different behavior AFAICT.
+    1. If you eval the `I always show up…` form, it will always show in the REPL buffer provided you're connected, regardless of whether `Logging forever` messages are currently showing.
+
+    1. If you cancel the future so that you can recreate it, the `Logging forever` messages will again show up in the REPL buffer.
+
+1. **Note:** Using `M-x cider-log-show` doesn't produce different behavior AFAICT.
