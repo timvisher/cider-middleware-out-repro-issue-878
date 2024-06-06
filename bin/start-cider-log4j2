@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+date -u '+%FT%T%z'
+
+java -version
+
+clojure --version
+
+clojure -M:log4j2:cider/nrepl

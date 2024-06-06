@@ -2,6 +2,8 @@
 
 date -u '+%FT%T%z'
 
+java -version
+
 clojure --version
 
-clojure -M:default:cider/nrepl
+clojure -M:logback:cider/nrepl

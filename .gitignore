@@ -1,2 +1,5 @@
 .cpcache
 .nrepl-port
+emacs.d/*
+!emacs.d/init.el
+!emacs.d/elpa/
